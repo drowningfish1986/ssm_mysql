@@ -4,7 +4,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.fish</groupId>
-  <artifactId>mysqlbox</artifactId>
+  <artifactId>fishbox</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>AppServer</name>
@@ -135,7 +135,7 @@
   </dependencies>
 
   <build>
-    <finalName>mysqlbox</finalName>
+    <finalName>fishbox</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

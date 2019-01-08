@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@RestController("/fishbox")
 public class CreditCalculatorController {
 
     @PostMapping("/credit/calculate")
