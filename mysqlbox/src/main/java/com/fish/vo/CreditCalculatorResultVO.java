@@ -19,12 +19,14 @@ public class CreditCalculatorResultVO {
 
     private List<Record> list;
 
+    private String errMsg;
+
     @Setter
     @Getter
     @ToString
     public class Record{
         //月数
-        private int month;
+        private String month;
         //剩余本金
         private BigDecimal surplusCapital;
         //当月本金支出
