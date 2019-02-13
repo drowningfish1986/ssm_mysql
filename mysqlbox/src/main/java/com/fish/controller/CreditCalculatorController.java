@@ -24,12 +24,28 @@ public class CreditCalculatorController {
         try {
             //本金
             capital = new BigDecimal(creditCalculatorVO.getCapital()).setScale(2, BigDecimal.ROUND_DOWN);
+            if(capital.compareTo(BigDecimal.ZERO) != 1){
+                resultVO.setErrMsg("本金应该大于0");
+                return resultVO;
+            }
             //月支出
             monthOut = new BigDecimal(creditCalculatorVO.getMonthOut()).setScale(2, BigDecimal.ROUND_DOWN);
+            if(monthOut.compareTo(BigDecimal.ZERO) != 1){
+                resultVO.setErrMsg("月支出应该大于0");
+                return resultVO;
+            }
             //利率
             outRate = new BigDecimal(creditCalculatorVO.getOutRate()).divide(new BigDecimal(1200),4, BigDecimal.ROUND_HALF_UP);
+            if(outRate.compareTo(BigDecimal.ZERO) != 1){
+                resultVO.setErrMsg("利率应该大于0");
+                return resultVO;
+            }
             //还款月数
             monthes = Integer.parseInt(creditCalculatorVO.getMonthes());
+            if(monthes <= 0){
+                resultVO.setErrMsg("还款月数应该大于0");
+                return resultVO;
+            }
 
             resultVO.setMonthOut(monthOut);
             List<CreditCalculatorResultVO.Record> list = new ArrayList<>(monthes * 2);
@@ -70,6 +86,9 @@ public class CreditCalculatorController {
             }
             System.out.println(errMsg);
             resultVO.setErrMsg(errMsg);
+        } catch (Exception e){
+            System.out.println("计算过程出错");
+            resultVO.setErrMsg("计算过程出错");
         }
         System.out.println("返回数据：" + resultVO);
         return resultVO;
